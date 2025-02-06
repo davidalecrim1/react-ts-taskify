@@ -1,18 +1,18 @@
 import React from "react";
 import { Todo } from "../models/model";
-import { SingleTodo } from "./SingleTodo";
+import { TodoItem } from "./TodoItem";
 import { Droppable } from "react-beautiful-dnd";
 
 interface props {
-    todos: Array<Todo>;
-    setTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
-    setCompletedTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
+    activeTodos: Array<Todo>;
+    setActiveTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
     completedTodos: Array<Todo>;
+    setCompletedTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
 }
 
 const TodoList: React.FC<props> = ({
-    todos,
-    setTodos,
+    activeTodos,
+    setActiveTodos,
     completedTodos,
     setCompletedTodos,
 }) => {
@@ -21,18 +21,18 @@ const TodoList: React.FC<props> = ({
             <Droppable droppableId="todoslist">
                 {(provided, snapshot) => (
                     <div
-                        className={`todos ${snapshot.isDraggingOver ? "dragactive" : ""}`}
+                        className={`active__todos ${snapshot.isDraggingOver ? "dragactive" : ""}`}
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
                         <span className="todos__heading">Active Tasks</span>
-                        {todos?.map((todo, index) => (
-                            <SingleTodo
+                        {activeTodos?.map((activeTodo, index) => (
+                            <TodoItem
                                 index={index}
-                                todos={todos}
-                                todo={todo}
-                                key={todo.id}
-                                setTodos={setTodos}
+                                activeTodos={activeTodos}
+                                activeTodo={activeTodo}
+                                key={activeTodo.id}
+                                setActiveTodos={setActiveTodos}
                             />
                         ))}
                         {provided.placeholder}
@@ -45,18 +45,18 @@ const TodoList: React.FC<props> = ({
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                         className={`
-                            todos  ${snapshot.isDraggingOver ?
+                            active__todos ${snapshot.isDraggingOver ?
                                 "dragcomplete" : "remove"
                             }`}
                     >
                         <span className="todos__heading">Completed Tasks</span>
-                        {completedTodos?.map((todo, index) => (
-                            <SingleTodo
+                        {completedTodos?.map((completedTodo, index) => (
+                            <TodoItem
                                 index={index}
-                                todos={completedTodos}
-                                todo={todo}
-                                key={todo.id}
-                                setTodos={setCompletedTodos}
+                                activeTodos={completedTodos}
+                                activeTodo={completedTodo}
+                                key={completedTodo.id}
+                                setActiveTodos={setCompletedTodos}
                             />
                         ))}
                         {provided.placeholder}

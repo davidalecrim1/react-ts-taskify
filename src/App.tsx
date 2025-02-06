@@ -7,14 +7,14 @@ import { DropResult } from 'react-beautiful-dnd';
 import { DragDropContext } from 'react-beautiful-dnd';
 function App() {
   const [todoDescription, setTodoDescription] = useState<string>("")
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [activeTodos, setActiveTodos] = useState<Todo[]>([]);
   const [completedTodos, setCompletedTodos] = useState<Todo[]>([]);
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (todoDescription) {
-      setTodos([...todos, { id: Date.now(), description: todoDescription, isDone: false }])
+      setActiveTodos([...activeTodos, { id: Date.now(), description: todoDescription, isDone: false }])
       setTodoDescription("");
     }
   }
@@ -31,7 +31,7 @@ function App() {
     }
 
     let add;
-    let active = [...todos];
+    let active = [...activeTodos];
     let complete = [...completedTodos];
 
     if (source.droppableId === "todoslist") {
@@ -49,7 +49,7 @@ function App() {
     }
 
     setCompletedTodos(complete);
-    setTodos(active);
+    setActiveTodos(active);
   }
 
 
@@ -63,8 +63,8 @@ function App() {
           handleAdd={handleAdd}
         />
         <TodoList
-          todos={todos}
-          setTodos={setTodos}
+          activeTodos={activeTodos}
+          setActiveTodos={setActiveTodos}
           completedTodos={completedTodos}
           setCompletedTodos={setCompletedTodos}
         />
