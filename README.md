@@ -1,6 +1,6 @@
 # Taskify
 
-A modern, interactive To-Do list application built with React and TypeScript, featuring drag-and-drop functionality and responsive design.
+Modern To-Do app built with React & TypeScript, featuring drag-and-drop, responsive design, and strong type safety. Manage tasks efficiently with a sleek UI and seamless UX.
 
 ## 🚀 Getting Started
 
