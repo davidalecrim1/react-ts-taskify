@@ -2,6 +2,8 @@
 
 Modern To-Do app built with React & TypeScript, featuring drag-and-drop, responsive design, and strong type safety. Manage tasks efficiently with a sleek UI and seamless UX.
 
+![](./docs/running-app-001.png)
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -14,7 +16,7 @@ Modern To-Do app built with React & TypeScript, featuring drag-and-drop, respons
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/react-ts-taskify.git
+git clone https://github.com/davidalecrim1/react-ts-taskify.git
 ```
 
 1. Navigate to the project directory and install dependencies
